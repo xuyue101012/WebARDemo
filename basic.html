@@ -108,6 +108,9 @@
     var arToolkitContext = new THREEx.ArToolkitContext({
         cameraParametersUrl:  'data/camera_para.dat',
         detectionMode: 'mono',
+		maxDetectionRate: 30,
+		canvasWidth: 80*3,
+		canvasHeight: 60*3,
     })
 
     // initialize it
@@ -123,7 +126,7 @@
         arToolkitContext.update( arToolkitSource.domElement )
 
         // update scene.visible if the marker is seen
-        scene.visible = camera.visible
+        //scene.visible = camera.visible
 
     })
 	var markerRoot = new THREE.Group;
