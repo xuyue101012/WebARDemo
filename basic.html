@@ -69,8 +69,7 @@
 
     // 初始化摄像机位置(0，0，0)
      camera=new THREE.Camera();
-	scene.add(camera);
-	//创建音效
+	 //创建音效
 	var listener1 = new THREE.AudioListener();//创建一个收听器并加入到摄像机中，声音的效果会随着摄像机的改变而改变
 	camera.add(listener);
 	var sound1 = new THREE.Audio(listener1);//创建声音并绑定对应的收听器
@@ -79,6 +78,8 @@
     sound1.setLoop(true);
     sound1.setRolloffFactor(2);
     mesh1.add(sound1);
+
+	scene.add(camera);
     // handle arToolkitSource
     var arToolkitSource = new THREEx.ArToolkitSource({})
     arToolkitSource.init(function onReady(){
