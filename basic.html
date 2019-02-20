@@ -69,7 +69,8 @@
 
     // 初始化摄像机位置(0，0，0)
      camera=new THREE.Camera();
-    //scene.add(camera);
+	 camera.lookAt(new THREE.Vector3(0, 0, 0));
+	scene.add(camera);
 
     // handle arToolkitSource
     var arToolkitSource = new THREEx.ArToolkitSource({})
@@ -206,7 +207,7 @@
                 scene.add( object );
                 object.position.set(0,0,0);
                 object.scale.set(0.02,0.02,0.02);
-				object.rotation.set(180,0,0);
+				object.rotation.set(0,0,0);
                 var axes=new THREE.AxisHelper(10);
                 scene.add(axes);
             }, onProgress, onError );
