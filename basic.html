@@ -73,12 +73,13 @@
 	var listener1 = new THREE.AudioListener();//创建一个收听器并加入到摄像机中，声音的效果会随着摄像机的改变而改变
 	camera.add(listener1);
 	var sound1 = new THREE.Audio(listener1);//创建声音并绑定对应的收听器
-    sound1.load('./vedio/1.mp3');//一些配置
-    sound1.setRefDistance(20);
-    sound1.setLoop(true);
-    sound1.setRolloffFactor(2);
-    mesh1.add(sound1);
-
+	var audioLoader = new THREE.AudioLoader();
+	audioLoader.load( './vedio/1.mp3', function( buffer ) {
+		sound.setBuffer( buffer );
+		sound.setLoop( true );
+		sound.setVolume( 0.5 );
+		sound.play();
+	});
 	scene.add(camera);
     // handle arToolkitSource
     var arToolkitSource = new THREEx.ArToolkitSource({})
