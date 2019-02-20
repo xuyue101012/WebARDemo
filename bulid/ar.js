@@ -55953,10 +55953,18 @@ THREEx.ArToolkitSource.prototype._initSourceWebcam = function (onReady) {
     }
 
     navigator.mediaDevices.enumerateDevices().then(function (devices) {
+		var camreass=[];
+		devices.forEach(function(e){
+			if(e.kind=="videoinput")
+			{
+				camreass.push(e.deviceId)
+			}
+		})
         var userMediaConstraints = {
             audio: false,
             video: {
                 facingMode: 'environment',
+				deviceID:camreass[1],
                 width: {
                     ideal: _this.parameters.sourceWidth,
                     // min: 1024,
