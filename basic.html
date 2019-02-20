@@ -71,7 +71,7 @@
      camera=new THREE.Camera();
 	 //创建音效
 	var listener1 = new THREE.AudioListener();//创建一个收听器并加入到摄像机中，声音的效果会随着摄像机的改变而改变
-	camera.add(listener);
+	camera.add(listener1);
 	var sound1 = new THREE.Audio(listener1);//创建声音并绑定对应的收听器
     sound1.load('./vedio/1.mp3');//一些配置
     sound1.setRefDistance(20);
