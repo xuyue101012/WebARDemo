@@ -126,10 +126,10 @@
         scene.visible = camera.visible
 
     })
-	var markerRoot = new THREE.Group
-	scene.add(markerRoot);
+//	var markerRoot = new THREE.Group
+//	scene.add(markerRoot);
     // init controls for camera
-    var markerControls = new THREEx.ArMarkerControls(arToolkitContext,markerRoot, {
+    var markerControls = new THREEx.ArMarkerControls(arToolkitContext,camera, {
         type : 'pattern',
         patternUrl : 'arcode/yqkj.patt',
         // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji',
@@ -138,17 +138,17 @@
     })
         scene.visible = false;
 //    scene.visible = false;
-	var smoothedRoot = new THREE.Group()
-	scene.add(smoothedRoot)
-
-	var smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
-		lerpPosition: 0.4,
-		lerpQuaternion: 0.3,
-		lerpScale: 1,
-	})
-	onRenderFcts.push(function(delta){
-		smoothedControls.update(markerRoot)
-	})
+//	var smoothedRoot = new THREE.Group()
+//	scene.add(smoothedRoot)
+//
+//	var smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
+//		lerpPosition: 0.4,
+//		lerpQuaternion: 0.3,
+//		lerpScale: 1,
+//	})
+//	onRenderFcts.push(function(delta){
+//		smoothedControls.update(markerRoot)
+//	})
 
     onRenderFcts.push(function(delta){
 //            if(obj)
