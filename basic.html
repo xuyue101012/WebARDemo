@@ -70,9 +70,9 @@
     // 初始化摄像机位置(0，0，0)
      camera=new THREE.Camera();
 	 //创建音效
-	var listener1 = new THREE.AudioListener();//创建一个收听器并加入到摄像机中，声音的效果会随着摄像机的改变而改变
-	camera.add(listener1);
-	var sound1 = new THREE.Audio(listener1);//创建声音并绑定对应的收听器
+	var listener = new THREE.AudioListener();//创建一个收听器并加入到摄像机中，声音的效果会随着摄像机的改变而改变
+	camera.add(listener);
+	var sound = new THREE.Audio(listener);//创建声音并绑定对应的收听器
 	var audioLoader = new THREE.AudioLoader();
 	audioLoader.load( './vedio/1.mp3', function( buffer ) {
 		sound.setBuffer( buffer );
