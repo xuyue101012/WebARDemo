@@ -196,7 +196,9 @@
 //        THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
 
 
-
+		var smoothedRoot = new THREE.Group();
+		scene.add(smoothedRoot);
+		var arWorldRoot = smoothedRoot;
         var mtlLoader = new THREE.MTLLoader();
 
         mtlLoader.setPath( 'obj/' );
@@ -207,7 +209,15 @@
             materials.preload();
 
             var objLoader = new THREE.OBJLoader();
-
+			var geometry	= new THREE.CubeGeometry(1,1,1);
+			var material	= new THREE.MeshNormalMaterial({
+				transparent : true,
+				opacity: 0.5,
+				side: THREE.DoubleSide
+			}); 
+			var mesh	= new THREE.Mesh( geometry, material );
+			mesh.position.y	= geometry.parameters.height/2;
+			arWorldRoot.add( mesh );
             objLoader.setMaterials( materials );
 
             objLoader.setPath( 'obj/' );
@@ -215,7 +225,7 @@
             objLoader.load( 'YueQing.obj', function ( object ) {
 //                object.position.y = - 95;
                 obj=object;
-                scene.add( object );
+                arWorldRoot.add( object );
                 object.position.set(0,0,0);
                 object.scale.set(0.02,0.02,0.02);
 				object.rotation.set(0,0,0);
