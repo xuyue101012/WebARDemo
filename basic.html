@@ -132,7 +132,7 @@
         patternUrl : 'arcode/yqkj.patt',
         // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji',
         // as we controls the camera, set changeMatrixMode: 'cameraTransformMatrix'
-        changeMatrixMode: 'cameraTransformMatrix'
+        //changeMatrixMode: 'cameraTransformMatrix'
     })
         scene.visible = false;
 //    scene.visible = false;
@@ -228,7 +228,7 @@
                 arWorldRoot.add( object );
                 object.position.set(0,0,0);
                 object.scale.set(0.02,0.02,0.02);
-				object.rotation.set(0,0,0);
+				//object.rotation.set(0,0,0);
                 var axes=new THREE.AxisHelper(10);
                 //scene.add(axes);
             }, onProgress, onError );
