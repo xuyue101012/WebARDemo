@@ -78,6 +78,7 @@
 		sound.setBuffer( buffer );
 		sound.setLoop( true );
 		sound.setVolume( 0.5 );
+		sound.play();
 	});
 	scene.add(camera);
     // handle arToolkitSource
@@ -147,7 +148,6 @@
     // render the scene
     onRenderFcts.push(function(){
         renderer.render( scene, camera );
-		sound.play();
 		update();
     });
 
