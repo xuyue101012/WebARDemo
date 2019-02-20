@@ -72,7 +72,9 @@
 	scene.add(camera);
 
     // handle arToolkitSource
-    var arToolkitSource = new THREEx.ArToolkitSource({})
+    var arToolkitSource = new THREEx.ArToolkitSource({
+		sourceType : 'webcam',
+	})
     arToolkitSource.init(function onReady(){
         onResize()
     })
