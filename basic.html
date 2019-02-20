@@ -138,6 +138,7 @@
     // render the scene
     onRenderFcts.push(function(){
         renderer.render( scene, camera );
+		update();
     });
 
     // run the rendering loop
@@ -213,6 +214,68 @@
 
 
         });
+	/* 场景中的内容 */
+    function initContent() {
 
+        /* 雪花图片 */
+        let texture = new THREE.TextureLoader().load('./snowflake2.png');
+
+        let geometry= new THREE.Geometry();
+
+        let pointsMaterial = new THREE.PointsMaterial({
+
+            size:2,
+            transparent:true,
+            opacity:0.8,
+            map:texture,
+            blending:THREE.AdditiveBlending,
+            sizeAttenuation:true,
+            depthTest: false
+        });
+
+        let range = 100;
+
+        for (let i = 0; i < 1500; i++ ) {
+
+            let vertice = new THREE.Vector3(
+                Math.random() * range - range / 2,
+                Math.random() * range * 1.5,
+                Math.random() * range - range / 2);
+            /* 纵向移动速度 */
+            vertice.velocityY = 0.1 + Math.random() / 3;
+            /* 横向移动速度 */
+            vertice.velocityX = (Math.random() - 0.5) / 3;
+
+            /* 将顶点加入几何 */
+            geometry.vertices.push(vertice);
+
+        }
+
+        geometry.center();
+
+        points = new THREE.Points(geometry, pointsMaterial);
+        points.position.y = -30;
+
+        scene.add(points);
+
+    }
+	function update() {
+
+        stats.update();
+
+        let vertices = points.geometry.vertices;
+        vertices.forEach(function (v) {
+
+            v.y = v.y - (v.velocityY);
+            v.x = v.x - (v.velocityX);
+
+            if (v.y <= 0) v.y = 60;
+            if (v.x <= -20 || v.x >= 20) v.velocityX = v.velocityX * -1;
+
+        });
+        /* 顶点变动之后需要更新，否则无法实现雨滴特效 */
+        points.geometry.verticesNeedUpdate = true;
+
+    }
 
 </script></body>
